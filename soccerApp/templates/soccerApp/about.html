@@ -1,0 +1,70 @@
+{% extends 'soccerApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-11">
+        <div class="glass-card p-3 text-center mb-4">
+            <h1 class="display-4 fw-bold mb-2">Our <span class="text-accent">Mission</span></h1>
+            <p class="lead text-white small">
+                Football Hub was created to bridge the gap between local talent and professional organization. 
+                We believe in "Visual around humanities"—using the beautiful game to foster community, 
+                growth, and discipline.
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-3">
+                <div class="d-flex flex-column gap-3">
+                    <div class="glass-card p-3 text-center border-start border-success border-4">
+                        <i class="bi bi-people-fill fs-3 text-accent mb-2"></i>
+                        <h6 class="fw-bold">Community Growth</h6>
+                        <p style="font-size: 0.75rem;" class="text-white mb-0">Digital home for local teams to showcase skills.</p>
+                    </div>
+
+                    <div class="glass-card p-3 text-center border-start border-primary border-4">
+                        <i class="bi bi-calendar-check-fill fs-3 text-primary mb-2"></i>
+                        <h6 class="fw-bold">Fair Play</h6>
+                        <p style="font-size: 0.75rem;" class="text-white mb-0">Structured official match-request system.</p>
+                    </div>
+
+                    <div class="glass-card p-3 text-center border-start border-danger border-4">
+                        <i class="bi bi-shield-lock-fill fs-3 text-danger mb-2"></i>
+                        <h6 class="fw-bold">Zero Bullying</h6>
+                        <p style="font-size: 0.75rem;" class="text-white mb-0">Strict code of conduct and team suspensions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="glass-card p-2 text-center h-100">
+                            <img src="{% static 'assets/images/p3.png' %}" class="img-fluid rounded mb-2" alt="Official 1">
+                            <p class="small fw-bold mb-0">Head of Operations</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="glass-card p-2 text-center h-100">
+                            <img src="{% static 'assets/images/p1.png' %}" class="img-fluid rounded mb-2" alt="Official 3">
+                            <p class="small fw-bold mb-0">Chief Referee</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="glass-card p-2 text-center h-100">
+                            <img src="{% static 'assets/images/p4.png' %}" class="img-fluid rounded mb-2" alt="Official 2">
+                            <p class="small fw-bold mb-0">Technical Director</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="glass-card p-2 text-center h-100">
+                            <img src="{% static 'assets/images/p2.png' %}" class="img-fluid rounded mb-2" alt="Official 4">
+                            <p class="small fw-bold mb-0">Community Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

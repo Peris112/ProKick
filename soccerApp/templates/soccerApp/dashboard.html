@@ -1,0 +1,128 @@
+{% extends 'soccerApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="glass-card p-4 shadow-sm">
+            <h4 class="text-accent fw-bold"><i class="bi bi-shield-shaded me-2"></i>{{ team.name }}</h4>
+            <p class="text-muted small"><i class="bi bi-geo-alt me-1"></i>{{ team.location }}</p>
+            <hr class="border-secondary opacity-25">
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-light">Total Players:</span>
+                <span class="badge bg-success fs-6">{{ players.count }}</span>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-light">Pending Matches:</span>
+                <span class="badge bg-warning text-dark fs-6">{{ received_requests.count }}</span>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <a href="{% url 'register_player' %}" class="btn btn-accent">
+                    <i class="bi bi-person-plus-fill me-2"></i>Add New Player
+                </a>
+                <a href="#squad-list" class="btn btn-outline-light btn-sm">
+                    <i class="bi bi-people me-2"></i>View Full Squad
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0"><i class="bi bi-envelope-paper me-2"></i>Match Requests</h4>
+            <span class="text-white small">Incoming Challenges</span>
+        </div>
+        
+        {% for request in received_requests %}
+        <div class="glass-card p-3 mb-3 d-flex justify-content-between align-items-center border-start border-accent border-4">
+            <div>
+                <h5 class="mb-1 text-white">vs {{ request.sender.name }}</h5>
+                <p class="mb-0 small text-white">
+                    <i class="bi bi-calendar-event me-1"></i> {{ request.match_date|date:"F d, Y" }} 
+                    <span class="mx-2">|</span>
+                    <i class="bi bi-pin-map me-1"></i> {{ request.venue }}
+                </p>
+            </div>
+            <div class="d-flex gap-2">
+                <form action="{% url 'handle_request' request.id 'accept' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-success btn-sm px-3">Accept</button>
+                </form>
+                <form action="{% url 'handle_request' request.id 'decline' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger btn-sm px-3">Decline</button>
+                </form>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center p-5 glass-card opacity-75">
+            <i class="bi bi-inbox text-muted display-4"></i>
+            <p class="text-white mt-3">No pending requests at the moment.</p>
+            <a href="{% url 'team_list' %}" class="text-accent text-decoration-none">Find a team to challenge &rarr;</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="row mt-5" id="squad-list">
+    <div class="col-12">
+        <div class="glass-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="mb-0 text-white"><i class="bi bi-person-lines-fill me-2 text-accent"></i>Squad Directory</h4>
+                <div class="input-group w-25 d-none d-md-flex">
+                    <span class="input-group-text bg-dark border-secondary text-muted"><i class="bi bi-search"></i></span>
+                    <input type="text" class="form-control bg-dark text-white border-secondary small" placeholder="Search player...">
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle mb-0">
+                    <thead class="table-light text-dark">
+                        <tr>
+                            <th>Jersey #</th>
+                            <th>Player Name</th>
+                            <th>Position</th>
+                            <th>Login ID</th>
+                            <th class="text-center">Security</th> <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="border-top-0">
+                        {% for player in players %}
+                        <tr>
+                            <td class="fw-bold text-accent">{{ player.jersey_number }}</td>
+                            <td>{{ player.name }}</td>
+                            <td>
+                                <span class="badge rounded-pill bg-secondary opacity-75">{{ player.position }}</span>
+                            </td>
+                            <td>
+                                <code class="text-info bg-dark p-1 rounded">@{{ player.user.username }}</code>
+                            </td>
+                            <td class="text-center">
+                                <a href="{% url 'reset_player_password' player.id %}" 
+                                   class="btn btn-sm btn-outline-warning border-opacity-25 py-1 px-3"
+                                   style="font-size: 0.7rem;"
+                                   onclick="return confirm('Are you sure you want to reset {{ player.name }}\'s password to the default (st_2026)?')">
+                                    <i class="bi bi-arrow-clockwise me-1"></i>Reset Pass
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-outline-light border-secondary"><i class="bi bi-pencil"></i></button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6" class="text-center text-white py-5">
+                                <p class="mb-0">Your squad is currently empty.</p>
+                                <a href="{% url 'register_player' %}" class="small text-accent">Add your first player now</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

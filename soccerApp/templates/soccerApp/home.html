@@ -1,0 +1,27 @@
+{% extends 'soccerApp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="full-page-hero" style="position: relative; height: 100vh; w-100; background: url('{% static 'assets/images/bgg.jpg' %}') center/cover no-repeat;">
+    
+    <div class="hero-overlay d-flex align-items-center justify-content-center" style="background: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9)); height: 100%; width: 100%;">
+        
+        <div class="container text-center px-4" style="z-index: 10;"> <h1 class="display-1 fw-extrabold mb-3 fade-in text-white fw-bold">
+                Elevate Your <span class="text-accent">Game</span>
+            </h1>
+            <p class="lead mb-5 hero-subtitle">
+                The ultimate platform for local team management.
+            </p>
+            
+            <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+                <a href="{% url 'team_list' %}" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow" style="position: relative; z-index: 20;">
+                    <i class="bi bi-search me-2"></i>Browse Teams
+                </a>
+                <a href="{% url 'signup' %}" class="btn btn-accent btn-lg px-5 py-3 rounded-pill shadow" style="position: relative; z-index: 20;">
+                    <i class="bi bi-plus-circle me-2"></i>Register Your Team
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

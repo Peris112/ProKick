@@ -1,0 +1,92 @@
+{% extends 'soccerApp/base.html' %}
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-9">
+        <div class="glass-card p-5 mb-4 border-bottom border-accent border-4">
+            <h1 class="text-accent fw-bold"><i class="bi bi-shield-check me-2"></i>Code of Conduct</h1>
+            <p class="text-white lead">Integrity, Respect, and the Spirit of the Game.</p>
+            <hr class="border-secondary opacity-25">
+            <p class="small text-white mb-0">Last Updated: March 2026</p>
+        </div>
+
+        <div class="glass-card p-4 p-md-5 shadow-lg">
+            
+            <section class="mb-5">
+                <h4 class="text-white mb-3">1. Core Philosophy</h4>
+                <p class="text-light opacity-75">
+                    Elite Football Hub is built on the belief that local football is a tool for community growth. 
+                    Every manager, player, and official is expected to uphold the highest standards of sportsmanship 
+                    both on the digital platform and on the physical pitch.
+                </p>
+            </section>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded h-100">
+                        <h6 class="text-accent"><i class="bi bi-check-circle-fill me-2"></i>Professionalism</h6>
+                        <p class="smaller text-white opacity-75 mb-0">
+                            Managers must ensure all player data is accurate. Impersonation or falsifying team 
+                            records will result in immediate permanent suspension from the hub.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded h-100">
+                        <h6 class="text-primary"><i class="bi bi-hand-thumbs-up-fill me-2"></i>Fair Competition</h6>
+                        <p class="smaller text-white opacity-75 mb-0">
+                            Match requests must be honored once accepted. Canceling games without a 24-hour 
+                            notice affects the ranking and reputation of both teams.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 border border-danger border-opacity-50 rounded h-100 bg-danger bg-opacity-10">
+                        <h6 class="text-danger"><i class="bi bi-exclamation-octagon-fill me-2"></i>Zero Tolerance: Bullying</h6>
+                        <p class="smaller text-white mb-0">
+                            Any form of harassment, hate speech, or physical threats—whether in person or via 
+                            our reporting system—is strictly prohibited.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded h-100">
+                        <h6 class="text-info"><i class="bi bi-megaphone-fill me-2"></i>Dispute Resolution</h6>
+                        <p class="smaller text-white opacity-75 mb-0">
+                            Conflicts regarding match outcomes must be reported via the 
+                            <a href="{% url 'contact' %}" class="text-accent text-decoration-none">Official Report Form</a> 
+                            with photo/video evidence where possible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mt-5 pt-4 border-top border-secondary border-opacity-25">
+                <h4 class="text-white mb-3">2. Enforcement</h4>
+                <p class="text-light opacity-75 small">
+                    The Elite Football Hub officials reserve the right to:
+                </p>
+                <ul class="text-white smaller">
+                    <li>Issue formal warnings to team managers.</li>
+                    <li>Temporary freeze on match-requesting privileges.</li>
+                    <li>Permanent removal of team and player profiles from the directory.</li>
+                </ul>
+            </section>
+
+            <div class="mt-5 text-center">
+                <p class="text-white-50 small mb-4">By using this platform, you agree to abide by these terms.</p>
+                <div class="d-flex justify-content-center">
+                    <a href="{% url 'home' %}" class="btn btn-outline-success w-50">I Understand & Agree</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .smaller { font-size: 0.85rem; line-height: 1.6; }
+</style>
+{% endblock %}

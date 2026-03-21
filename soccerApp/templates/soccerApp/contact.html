@@ -1,0 +1,58 @@
+{% extends 'soccerApp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-md-7 mb-4">
+        <div class="glass-card p-4 border-danger shadow-lg h-100">
+            <h3 class="text-danger mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>Report an Issue</h3>
+            <p class="text-white small opacity-75">Use this form for technical support or to report bullying and misconduct.</p>
+            
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-2">
+                    <label class="form-label small text-secondary">Team Name / Subject</label>
+                    <input type="text" name="subject" placeholder="What is this regarding?" class="form-control bg-dark text-white border-secondary">
+                </div>
+                <div class="mb-2">
+                    <label class="form-label small text-secondary">Message</label>
+                    <textarea name="message" rows="5" placeholder="Describe the incident or technical problem..." class="form-control bg-dark text-white border-secondary"></textarea>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-danger w-50 mx-auto fw-bold py-2">Submit Report</button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="glass-card p-4 mb-2 border-secondary border-opacity-25">
+            <h5 class="text-accent mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Physical Office</h5>
+            <p class="text-white small mb-0 fw-bold bi bi-check-circle text-success"> ProKick Soccer Hub HQ</p>
+            <p class="text-white small bi bi-check-circle text-success"> Runda Building, 2th Floor, Suite 202</p>
+            <p class="text-white small mb-0 bi bi-check-circle text-success"> Great Ngeria Street, Eldoret, Kenya</p>
+        </div>
+
+        <div class="glass-card p-4 mb-3 border-secondary border-opacity-25">
+            <h5 class="text-accent mb-3"><i class="bi bi-envelope-at-fill me-2"></i>Digital Support</h5>
+            <p class="text-white small mb-0">support@prokickhub.co.ke</p>
+            <p class="text-white small mb-0">Typical response: 24-48 hours</p>
+        </div>
+
+        <div class="glass-card p-4 border-secondary border-opacity-25">
+            <h5 class="text-accent mb-3"><i class="bi bi-clock-history me-2"></i>Business Hours</h5>
+            <div class="d-flex justify-content-between small mb-2 border-bottom border-secondary border-opacity-10 pb-1">
+                <span class="text-white bi bi-check-circle text-success"> Mon - Fri:</span>
+                <span class="text-white">8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="d-flex justify-content-between small mb-2 border-bottom border-secondary border-opacity-10 pb-1">
+                <span class="text-white bi bi-check-circle text-success"> Saturday:</span>
+                <span class="text-white">9:00 AM - 2:00 PM</span>
+            </div>
+            <div class="d-flex justify-content-between small">
+                <span class="text-white bi bi-check-circle text-success"> Sunday:</span>
+                <span class="text-danger fw-bold">Closed (Field Days)</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

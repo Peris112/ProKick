@@ -1,0 +1,51 @@
+{% extends 'soccerApp/base.html' %}
+{% block content %}
+<div class="row justify-content-center py-5">
+    <div class="col-md-5">
+        <div class="glass-card p-4 shadow-lg border-accent">
+            <div class="text-center mb-4">
+                <div class="badge bg-success mb-2">Manager Access Only</div>
+                <h3>Register Your Team</h3>
+                <p class="text-white small">Only Team Leads or Managers should create this account.</p>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label small">Manager Full Name</label>
+                    <input type="text" name="manager_name" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small">Team Name</label>
+                    <input type="text" name="team_name" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small">Team Location</label>
+                    <input type="text" name="location" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Kisumu" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small">Email Address</label>
+                    <input type="email" name="email" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label small">Create Password</label>
+                    <input type="password" name="password" class="form-control bg-dark text-white border-secondary" required>
+                </div>
+                
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" required>
+                    <label class="form-check-label small text-white">
+                        I agree to the <a href="{% url 'conduct' %}" class="text-accent">Code of Conduct</a> and will report any bullying.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-accent w-100 py-2">Create Manager Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
