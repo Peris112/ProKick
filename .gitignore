@@ -1,0 +1,16 @@
+# Django-specific
+db.sqlite3
+__pycache__/
+*.py[cod]
+media/
+staticfiles/
+
+# Virtual Environments
+soccer/
+venv/
+env/
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
