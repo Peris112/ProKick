@@ -26,5 +26,6 @@ urlpatterns = [
     path('conduct/', views.conduct, name='conduct'),
 
     path('reset-player/<int:player_id>/', views.reset_player_password, name='reset_player_password'),
-
+    
+    path('send-challenge/<int:receiver_id>/', views.send_challenge, name='send_challenge'),
 ]

@@ -1,0 +1,53 @@
+{% extends 'soccerApp/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="glass-card p-4 shadow-lg border border-secondary border-opacity-25">
+                <h2 class="text-white fw-bold mb-4">
+                    <i class="bi bi-trophy-fill text-success me-2"></i>Challenge {{ receiver.name }}
+                </h2>
+                
+                <p class="text-light opacity-75 mb-4">
+                    Fill in the details below to propose a match against <strong>{{ receiver.name }}</strong>. 
+                    They will receive this request on their dashboard.
+                </p>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="match_date" class="form-label text-white small">Match Date & Time</label>
+                        <input type="datetime-local" name="match_date" id="match_date" 
+                               class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="venue" class="form-label text-white small">Match Venue / Field Name</label>
+                        <input type="text" name="venue" id="venue" 
+                               placeholder="e.g. Kisumu Stadium"
+                               class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success w-100 fw-bold">
+                            Send Match Request
+                        </button>
+                        <a href="{% url 'team_list' %}" class="btn btn-outline-secondary w-50">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom styling for the datetime picker to make it look good in dark mode */
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+    }
+</style>
+{% endblock %}

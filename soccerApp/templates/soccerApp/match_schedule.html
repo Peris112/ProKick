@@ -14,16 +14,20 @@
             </tr>
         </thead>
         <tbody>
-            {% for match in matches %}
-            <tr>
-                <td>{{ match.date|date:"M d, H:i" }}</td>
-                <td class="fw-bold">{{ match.team_a }}</td>
-                <td class="text-success">VS</td>
-                <td class="fw-bold">{{ match.team_b }}</td>
-                <td>{{ match.venue }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+    {% for match in matches %}
+    <tr>
+        <td>{{ match.match_date|date:"M d, H:i" }}</td>
+
+        <td class="fw-bold">{{ match.sender.name }}</td>
+
+        <td class="text-success">VS</td>
+
+        <td class="fw-bold">{{ match.receiver.name }}</td>
+
+        <td>{{ match.venue }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
     </table>
 </div>
 {% endblock %}
