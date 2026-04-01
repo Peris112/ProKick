@@ -7,8 +7,10 @@
             <h3 class="text-danger mb-2"><i class="bi bi-exclamation-triangle-fill me-2"></i>Report an Issue</h3>
             <p class="text-white small opacity-75">Use this form for technical support or to report bullying and misconduct.</p>
             
-            <form method="POST">
+            <form action="https://api.web3forms.com/submit" method="POST">
                 {% csrf_token %}
+                  <input type="hidden" name="access_key" value="60d9b10c-3518-4919-915b-89526eb42242">
+                <input type="hidden" name="subject" value="Contact Request: Football Hub Project">
                 <div class="mb-2">
                     <label class="form-label small text-secondary">Team Name / Subject</label>
                     <input type="text" name="subject" placeholder="What is this regarding?" class="form-control bg-dark text-white border-secondary">
